@@ -30,25 +30,28 @@ keys.addEventListener('click', async e => {
 
    if (action === 'calculate')
    {
-        /*try {
-            const response = await fetch('/calculate', {
-              method: 'post',
-              body: {
-                "cadena": stringToEvaluate
-              }
-            });
-            console.log('Completed!', response);
-          } catch(err) {
-            console.error(`Error: ${err}`);
-          }*/
-
-          $.post("http:localhost:8080/calculate",
+          /*$.post("calculate",
+              JSON.stringify(
               {
                 cadena: stringToEvaluate
-              },
+              }),
               function(data,status){
                 alert("Data: " + data + "\nStatus: " + status);
-              });
+              });*/
+
+              $.ajax({
+                  type: 'POST',
+                  url: '/calculate',
+                  contentType: 'application/json; charset=utf-8',
+                  data: JSON.stringify(
+                        {
+                                cadena: stringToEvaluate
+                        })
+              }).done(function (data) {
+                  //self.result("Done!");
+                  alert("Data: " + data);
+              }).fail(showError);
+
    }
 
    if (action === 'decimal') {
