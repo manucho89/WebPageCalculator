@@ -30,15 +30,6 @@ keys.addEventListener('click', async e => {
 
    if (action === 'calculate')
    {
-          /*$.post("calculate",
-              JSON.stringify(
-              {
-                cadena: stringToEvaluate
-              }),
-              function(data,status){
-                alert("Data: " + data + "\nStatus: " + status);
-              });*/
-
               $.ajax({
                   type: 'POST',
                   url: '/calculate',
