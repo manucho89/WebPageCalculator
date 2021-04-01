@@ -1,16 +1,22 @@
 const calculator = document.querySelector('.calculator')
 const keys = calculator.querySelector('.calculator__keys')
 
+var stringToEvaluate = "";
+
+
 keys.addEventListener('click', e => {
  if (e.target.matches('button')) {
    // Do something
-   debugger;
+
 
    const key = e.target
    const action = key.dataset.action
 
    if (!action) {
-     console.log('number key!')
+     //console.log('number key!')
+     stringToEvaluate += e.target.id;
+     document.getElementsByClassName("calculator__display")[0].innerHTML = stringToEvaluate;
+
    }
 
    if (
