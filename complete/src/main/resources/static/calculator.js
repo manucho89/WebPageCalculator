@@ -4,7 +4,7 @@ const keys = calculator.querySelector('.calculator__keys')
 var stringToEvaluate = "";
 
 
-keys.addEventListener('click', e => {
+keys.addEventListener('click', async e => {
  if (e.target.matches('button')) {
    // Do something
 
@@ -19,13 +19,36 @@ keys.addEventListener('click', e => {
 
    }
 
-   if (
+   /*if (
      action === 'add' ||
      action === 'subtract' ||
      action === 'multiply' ||
      action === 'divide'
    ) {
      console.log('operator key!')
+   }*/
+
+   if (action === 'calculate')
+   {
+        /*try {
+            const response = await fetch('/calculate', {
+              method: 'post',
+              body: {
+                "cadena": stringToEvaluate
+              }
+            });
+            console.log('Completed!', response);
+          } catch(err) {
+            console.error(`Error: ${err}`);
+          }*/
+
+          $.post("http:localhost:8080/calculate",
+              {
+                cadena: stringToEvaluate
+              },
+              function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+              });
    }
 
    if (action === 'decimal') {
